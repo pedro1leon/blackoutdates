@@ -116,7 +116,6 @@ const getClientResponse = async (url, options) => utils.fetchClient(url, options
 //-Transforms the client response to a final response format
 const transformResponseFromClient = async (clientResponse) => {
   const datesConfig = new DatesConfig();
-  let dateFrom = '';
 
   const getRouteDates = (data, route, sendValidDate) => {
     if (Array.isArray(data.calendarSelectableDays.disabledDates) && data.calendarSelectableDays.disabledDates.length) {
