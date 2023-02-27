@@ -71,7 +71,7 @@ const getResponseFromClient = async (requestPayload, env) => {
 
 //-Build the headers to be used in the request to the client. 
 const getHeadersForRequestToClient = async (env) => {
-  const { authorizationToken, statusCode } = await utils.getTokenWithCredentials(CLIENT, CLIENTINFO, env, TOKEN_IN_KV_AGE)
+  const { authorizationToken, statusCode } = await getToken(env)
   if (objectHelpers.isUndefined(authorizationToken)) {
     throw new ControlError('Invalid authorization token', statusCode)
   }
@@ -79,6 +79,48 @@ const getHeadersForRequestToClient = async (env) => {
     ...CLIENTINFO.clientRequestHeaders,
     Authorization: authorizationToken,
   }
+}
+
+/**
+* Get Token Using Client Credentials
+* @returns {}
+*/
+const getToken = async (env) => { 
+  let statusCode = 200
+  let authorizationToken = await env.KVBD.get(CLIENT+`#authToken`)
+
+  if (authorizationToken===null) {
+    try {
+      const { url, subscriptionKey } = CLIENTINFO.authAPIConfig || {}
+      const oHeaders = new Headers();
+      oHeaders.append("Ocp-Apim-Subscription-Key", `${subscriptionKey}`);
+      oHeaders.append("Content-Type", "application/json");
+      oHeaders.append("User-Agent", "em-blackoutdate/1.0.0");
+  
+      const req = new Request(url, {
+        method: 'POST',
+        headers: oHeaders
+      }) 
+  
+      const authResponse = await fetch(req, { cf: { cacheTtl: 0 } })
+  
+      if (!authResponse.ok) {
+        statusCode = 407
+        authorizationToken = undefined
+      } else {
+        const authResData = await authResponse.json()      
+        authorizationToken = authResData && authResData.data && authResData.data.token || undefined
+        if (authorizationToken)  {
+          await env.KVBD.put(CLIENT+"#authToken",authorizationToken,{expirationTtl: TOKEN_IN_KV_AGE})
+        }
+      }
+    } catch (e) {
+      statusCode = 499
+      authorizationToken = undefined
+    }  
+  }
+  
+  return { authorizationToken, statusCode }
 }
 
 //-Build the query parameters to be used in the request to the client. 
