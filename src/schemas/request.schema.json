@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "origin",
+    "destination",
+    "roundtrip"
+  ],
+  "properties": {
+    "origin": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "roundtrip": {
+      "type": ["boolean","string"]
+    }
+  }
+}
