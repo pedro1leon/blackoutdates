@@ -1,9 +1,12 @@
 import { Router } from 'itty-router'
 import ControlError from "./classes/error.class"
+
 import avHandler from "./handlers/avianca"
 import syHandler from "./handlers/sun-country"
 import f9Handler from "./handlers/frontier"
 import f8Handler from "./handlers/flair"
+
+import xxHandler from "./handlers/test-noapi-call"
 
 const router = Router()
 
@@ -13,6 +16,8 @@ router.post('/av', (request, env, ctx) => avHandler(request, env, ctx))
 router.post('/sy', (request, env, ctx) => syHandler(request, env, ctx))
 router.post('/f9', (request, env, ctx) => f9Handler(request, env, ctx))
 router.post('/f8', (request, env, ctx) => f8Handler(request, env, ctx))
+
+router.post('/xx', (request, env, ctx) => xxHandler(request, env, ctx))
 
 router.all('*', (request) => {
   const pathname = new URL(request.url).pathname
