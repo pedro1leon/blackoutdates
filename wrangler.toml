@@ -16,9 +16,19 @@ F8 = '{"authAPIConfig":{},"clientRequestHeaders":{"Authorization":"Basic RVZFUll
 [env.dev]
 name = "blackoutdates-dev"
 workers_dev = false
-route = "blackoutdates.ibesame.com/*"
+route = "blackoutdates-dev.ibesame.com/*"
 kv_namespaces = [
   { binding = "KVBD", id = "9940247eb89a4dd493fd9649ba6e8bff" }
 ]
 
 vars = { ENV = "dev", AV = '{"authAPIConfig":{"url":"https://login.microsoftonline.com/a2addd3e-8397-4579-ba30-7a38803fc3bf/oauth2/token","client_id":"e1dae4a3-caa0-4f5a-bb33-85022c9b6043","client_secret":"63Pex8[lPiPw7jBNIOngpX=O-gGJJA=u","resource":"api://e1dae4a3-caa0-4f5a-bb33-85022c9b6043","grant_type":"client_credentials"},"clientRequestHeaders":{"flow":"Amadeus","Ocp-Apim-Subscription-Key":"56c3618100ba4130b419c1487c3ced3b"},"clientRequestUrl":"https://az-am-exp-use-prd.azure-api.net/API_Birchman/flightsSchedule"}', SY = '{"authAPIConfig":{"url":"https://syprod-api.suncountry.com/oapi/v1/token","subscriptionKey":"5bbd8a645544483da22cab34282535de"},"clientRequestHeaders":{"Ocp-Apim-Subscription-Key":"5bbd8a645544483da22cab34282535de","Content-Type":"application/json"},"clientRequestUrl":"https://syprod-api.suncountry.com/oapi/v1/flight/schedule"}', F9 = '{"authAPIConfig":{},"clientRequestHeaders":{"Content-Type":"application/json"},"clientRequestUrl":"https://booking.flyfrontier.com/Flight/RetrieveSchedule"}', F8 = '{"authAPIConfig":{},"clientRequestHeaders":{"Authorization":"Basic RVZFUllNVU5ET0FQSToxcWF6eHN3Mg==","Content-Type":"application/json"},"clientRequestUrl":"https://flairair-api.intelisys.ca/RESTv1/schedules"}'}
+
+[env.prod]
+name = "blackoutdates"
+workers_dev = false
+route = "blackoutdates.ibesame.com/*"
+kv_namespaces = [
+  { binding = "KVBD", id = "9b839cb37b2749ac9bc3d29cea52bcfc" }
+]
+
+vars = { ENV = "prod", AV = '{"authAPIConfig":{"url":"https://login.microsoftonline.com/a2addd3e-8397-4579-ba30-7a38803fc3bf/oauth2/token","client_id":"e1dae4a3-caa0-4f5a-bb33-85022c9b6043","client_secret":"63Pex8[lPiPw7jBNIOngpX=O-gGJJA=u","resource":"api://e1dae4a3-caa0-4f5a-bb33-85022c9b6043","grant_type":"client_credentials"},"clientRequestHeaders":{"flow":"Amadeus","Ocp-Apim-Subscription-Key":"56c3618100ba4130b419c1487c3ced3b"},"clientRequestUrl":"https://az-am-exp-use-prd.azure-api.net/API_Birchman/flightsSchedule"}', SY = '{"authAPIConfig":{"url":"https://syprod-api.suncountry.com/oapi/v1/token","subscriptionKey":"5bbd8a645544483da22cab34282535de"},"clientRequestHeaders":{"Ocp-Apim-Subscription-Key":"5bbd8a645544483da22cab34282535de","Content-Type":"application/json"},"clientRequestUrl":"https://syprod-api.suncountry.com/oapi/v1/flight/schedule"}', F9 = '{"authAPIConfig":{},"clientRequestHeaders":{"Content-Type":"application/json"},"clientRequestUrl":"https://booking.flyfrontier.com/Flight/RetrieveSchedule"}', F8 = '{"authAPIConfig":{},"clientRequestHeaders":{"Authorization":"Basic RVZFUllNVU5ET0FQSToxcWF6eHN3Mg==","Content-Type":"application/json"},"clientRequestUrl":"https://flairair-api.intelisys.ca/RESTv1/schedules"}'}
