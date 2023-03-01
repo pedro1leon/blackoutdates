@@ -27,7 +27,6 @@ vars = { ENV = "dev", AV = '{"authAPIConfig":{"url":"https://login.microsoftonli
 name = "blackoutdates"
 workers_dev = false
 route = "blackoutdates.ibesame.com/*"
-account_id = "7df0699f57806423b6de07ba264361ac"
 kv_namespaces = [
   { binding = "KVBD", id = "9b839cb37b2749ac9bc3d29cea52bcfc" }
 ]
