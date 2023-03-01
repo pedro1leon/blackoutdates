@@ -8,7 +8,7 @@ import f8Handler from "./handlers/flair"
 
 const router = Router()
 
-router.get('/', () => new Response('Welcome to EveryMundo Cloudflare'))  //Root route
+router.get('/', () => new Response('Welcome to EveryMundo Cloudflare !!'))  //Root route
 
 router.post('/av', (request, env, ctx) => avHandler(request, env, ctx))
 router.post('/sy', (request, env, ctx) => syHandler(request, env, ctx))
