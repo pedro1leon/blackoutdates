@@ -10,6 +10,16 @@ const router = Router()
 
 router.get('/', () => new Response('Welcome to EveryMundo Cloudflare !!'))  //Root route
 
+router.options("*", () => {
+  return new Response("OK", {
+    headers: {
+      "Access-Control-Allow-Headers": "*",
+      "Access-Control-Allow-Methods": "GET, HEAD, POST, OPTIONS",
+      "Access-Control-Allow-Origin": "*"
+    }
+  });
+});
+
 router.post('/av', (request, env, ctx) => avHandler(request, env, ctx))
 router.post('/sy', (request, env, ctx) => syHandler(request, env, ctx))
 router.post('/f9', (request, env, ctx) => f9Handler(request, env, ctx))
