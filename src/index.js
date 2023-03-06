@@ -1,4 +1,4 @@
-import { Router } from '../node_modules/itty-router'
+import { Router } from './helpers/itty-router'
 import ControlError from "./classes/error.class"
 
 import avHandler from "./handlers/avianca"
