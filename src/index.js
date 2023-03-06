@@ -1,4 +1,4 @@
-import Router from './helpers/itty-router/dist/itty-router'
+import Router from './helpers/itty-router/dist/itty-router.js'
 import ControlError from "./classes/error.class"
 
 import avHandler from "./handlers/avianca"
