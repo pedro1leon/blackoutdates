@@ -15,6 +15,7 @@ let CLIENTINFO
 
 export const clientHandler = async (request, env, ctx) => {
   try {
+    console.log('request', request.method)
     CLIENTINFO = JSON.parse(env[CLIENT.toLocaleUpperCase()])
     const url = request && request.url
     const requestPayload = await utils.validatePayload(request)
