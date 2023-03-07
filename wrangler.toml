@@ -14,7 +14,7 @@ F9 = '{"authAPIConfig":{},"clientRequestHeaders":{"Content-Type":"application/js
 F8 = '{"authAPIConfig":{},"clientRequestHeaders":{"Authorization":"Basic RVZFUllNVU5ET0FQSToxcWF6eHN3Mg==","Content-Type":"application/json"},"clientRequestUrl":"https://flairair-api.intelisys.ca/RESTv1/schedules"}'
 
 [build]
-command = "npm install && npm run build"
+command = "npm install"
 
 [env.dev]
 name = "blackoutdates-dev"
