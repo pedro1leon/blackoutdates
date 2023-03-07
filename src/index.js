@@ -1,3 +1,4 @@
+import jwt_decode from 'jwt-decode'
 import { Router } from 'itty-router'
 import ControlError from "./classes/error.class"
 
@@ -5,6 +6,8 @@ import avHandler from "./handlers/avianca"
 import syHandler from "./handlers/sun-country"
 import f9Handler from "./handlers/frontier"
 import f8Handler from "./handlers/flair"
+
+const decoded = jwt_decode("1234567890");
 
 const router = Router()
 
