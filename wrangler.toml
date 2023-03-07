@@ -13,6 +13,9 @@ SY = '{"authAPIConfig":{"url":"https://syprod-api.suncountry.com/oapi/v1/token",
 F9 = '{"authAPIConfig":{},"clientRequestHeaders":{"Content-Type":"application/json"},"clientRequestUrl":"https://booking.flyfrontier.com/Flight/RetrieveSchedule"}'
 F8 = '{"authAPIConfig":{},"clientRequestHeaders":{"Authorization":"Basic RVZFUllNVU5ET0FQSToxcWF6eHN3Mg==","Content-Type":"application/json"},"clientRequestUrl":"https://flairair-api.intelisys.ca/RESTv1/schedules"}'
 
+[build]
+command = "npm install && npm run build"
+
 [env.dev]
 name = "blackoutdates-dev"
 workers_dev = false
