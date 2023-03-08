@@ -89,6 +89,8 @@ const getToken = async (env) => {
   let statusCode = 200
   let authorizationToken = await env.KVBD.get(CLIENT+`#authToken`)
 
+  console.log('KV Search', authorizationToken)
+
   if (authorizationToken===null) {
     try {
       const { url, client_id, client_secret, resource, grant_type = 'client_credentials' } = CLIENTINFO.authAPIConfig || {}
@@ -106,8 +108,12 @@ const getToken = async (env) => {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }) 
-  
+
+      console.log('Pidio Token Req', JSON.stringify(CLIENTINFO.authAPIConfig,null,2))
+      
       const authResponse = await fetch(req, { cf: { cacheTtl: 0 } })
+
+      console.log('Pidio Token Res', JSON.stringify(authResponse,null,2))
   
       if (!authResponse.ok) {
         statusCode = 407

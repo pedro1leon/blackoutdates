@@ -39,7 +39,7 @@ export default {
     })
     .catch(err => {
       const statusError = err instanceof ControlError ? err.code : 500
-      return new Response(err.message, { 
+      return new Response(JSON.stringify({}), { 
         status: `${statusError}`, 
         headers: { 
           'content-type': 'application/json;charset=UTF-8'
