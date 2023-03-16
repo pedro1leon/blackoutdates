@@ -20,6 +20,7 @@ router.options("*", () => {
   });
 });
 
+// se adicionan los clientes
 router.post('/av', (request, env, ctx) => avHandler(request, env, ctx))
 router.post('/sy', (request, env, ctx) => syHandler(request, env, ctx))
 router.post('/f9', (request, env, ctx) => f9Handler(request, env, ctx))
